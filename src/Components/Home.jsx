@@ -1,8 +1,9 @@
 import React, {useContext, useState} from 'react';
 import { Container } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 import api from '../api';
 import Context from '../Context/Context';
-
+import  ListItem  from './ListItem';
 function Home() {
     const { users, setUsers } = useContext(Context);
 
@@ -15,6 +16,7 @@ function Home() {
 
         api.get(`/?nat=${nacionality}&gender=${gender}&results=${amount}`)
         .then(({data}) => {
+            console.log(data.results)
             setUsers(data.results);
         }).catch(() => alert('Algo deu errado :('));
     }
@@ -55,6 +57,15 @@ function Home() {
                     </select>
                     <button type="submit" onClick={ (e) => gerar(e) }>Gerar</button>
                 </form>
+                <div className="userContainer">
+                    { users.map(({name, dob, nat, picture}, i) => <Link route={`user/${i}`}>
+                        <ListItem
+                            name={name} age={dob.age} nacionality={nat} thumb={picture.thumbnail}
+                        />
+                    </Link>
+                         
+                    )}
+                </div>
             </Container>
         </div>
     )
