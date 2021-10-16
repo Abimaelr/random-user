@@ -4,6 +4,9 @@ import { Link } from 'react-router-dom';
 import api from '../api';
 import Context from '../Context/Context';
 import  ListItem  from './ListItem';
+
+import './assets/Home.css';
+
 function Home() {
     const { users, setUsers } = useContext(Context);
 
@@ -57,9 +60,9 @@ function Home() {
                     <button type="submit" onClick={ (e) => gerar(e) }>Gerar</button>
                 </form>
                 <div className="userContainer">
-                    { users.map(({name, dob, nat, picture}, i) => <Link to={`/user/${i}`}>
+                    { users.map(({name, dob, nat, picture}, i) => <Link className="link" to={`/user/${i}`}>
                         <ListItem
-                            name={name} age={dob.age} nacionality={nat} thumb={picture.thumbnail}
+                            name={name} age={dob.age} nacionality={nat} thumb={picture.medium}
                         />
                     </Link>
                          
