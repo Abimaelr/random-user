@@ -5,6 +5,7 @@ import {
   Route,
 } from "react-router-dom";
 import Provider from "./Context/Provider";
+import Header from "./Screens/Header";
 import Home from "./Screens/Home";
 import User from "./Screens/User";
 
@@ -13,6 +14,7 @@ function App() {
     <div className="App">
       <Provider>
         <Router>
+          <Header />
           <Switch>
             <Route path="/" component={ Home }/>
             <Route path="/user/:position" component={ User }/>
