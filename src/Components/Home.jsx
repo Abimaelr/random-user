@@ -13,7 +13,6 @@ function Home() {
 
     const gerar = (e) => {
         e.preventDefault();
-
         api.get(`/?nat=${nacionality}&gender=${gender}&results=${amount}`)
         .then(({data}) => {
             console.log(data.results)
@@ -58,7 +57,7 @@ function Home() {
                     <button type="submit" onClick={ (e) => gerar(e) }>Gerar</button>
                 </form>
                 <div className="userContainer">
-                    { users.map(({name, dob, nat, picture}, i) => <Link route={`user/${i}`}>
+                    { users.map(({name, dob, nat, picture}, i) => <Link to={`/user/${i}`}>
                         <ListItem
                             name={name} age={dob.age} nacionality={nat} thumb={picture.thumbnail}
                         />
