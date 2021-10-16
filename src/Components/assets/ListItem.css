@@ -1,0 +1,42 @@
+@import url(//db.onlinewebfonts.com/c/ddee9598ebecf0767f99f6a995cab291?family=P22+Frau+Jenson+People);
+@import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Georama:wght@300&family=Montserrat&display=swap");
+.listItem {
+  background-color: #D1C4E9;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  border-radius: 20px 0 20px 0;
+  height: 250px;
+  width: 160px;
+}
+
+.listItem img {
+  border-radius: 10px 0 10px 0;
+  width: 100%;
+  height: auto;
+}
+
+.listItem .basicInfo {
+  font-family: "Georama", sans-serif;
+  color: #512DA8;
+  padding: 3px;
+}
+
+.listItem .basicInfo h6 {
+  text-align: center;
+}
+
+.listItem .basicInfo div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+/*# sourceMappingURL=ListItem.css.map */
