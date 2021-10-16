@@ -5,9 +5,9 @@ import {
   Route,
 } from "react-router-dom";
 import Provider from "./Context/Provider";
-import Header from "./Screens/Header";
-import Home from "./Screens/Home";
-import User from "./Screens/User";
+import Header from "./Components/Header";
+import Home from "./Components/Home";
+import User from "./Components/User";
 
 function App() {
   return (

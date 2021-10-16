@@ -1,5 +1,6 @@
 import React, {useContext, useState} from 'react';
 import { Container } from 'react-bootstrap';
+import api from '../api';
 import Context from '../Context/Context';
 
 function Home() {
@@ -11,7 +12,11 @@ function Home() {
 
     const gerar = (e) => {
         e.preventDefault();
-        console.log(amount)
+
+        api.get(`/?nat=${nacionality}&gender=${gender}&results=${amount}`)
+        .then(({data}) => {
+            setUsers(data.results);
+        }).catch(() => alert('Algo deu errado :('));
     }
 
     return (
@@ -19,7 +24,7 @@ function Home() {
             <Container>
                 <form>
                     <label htmlFor="qnt">Quantas Pessoas?</label>
-                    <input min="10" defaultValue={10} type="number" name="qnt" id="qnt"  onChange={({ target }) => setAmount(target.value)}/>
+                    <input min="1" defaultValue={1} type="number" name="qnt" id="qnt"  onChange={({ target }) => setAmount(target.value)}/>
                     
                     <label htmlFor="gender">Gênero</label>
                     <select name="gender" id="gender" onChange={({ target }) => setGender(target.value)}>
