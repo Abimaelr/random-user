@@ -83,7 +83,7 @@ function Home() {
                     </Col>
                 </Row>
                 <div className="userContainer">
-                    { users.map(({name, dob, nat, picture}, i) => <Link key={i} className="link" to={`/user/${i}`}>
+                    { users.map(({name, dob, nat, picture}, i) => <Link key={i} className="link" to={`/random-user/user/${i}`}>
                        <Bounce right> <ListItem
                             name={name} age={dob.age} nacionality={nat} thumb={picture.medium}
                         /></Bounce>

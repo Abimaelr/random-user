@@ -16,8 +16,8 @@ function App() {
         <Router>
           <Header />
           <Switch>
-            <Route exact path="/" component={ Home }/>
-            <Route exact path="/user/:id" component={ User }/>
+            <Route exact path="/random-user/" component={ Home }/>
+            <Route exact path="/random-user/user/:id" component={ User }/>
           </Switch>
         </Router>
       </Provider>
