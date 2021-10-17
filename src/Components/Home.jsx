@@ -50,7 +50,7 @@ function Home() {
                                 <select name="gender" id="gender" onChange={({ target }) => setGender(target.value)}>
                                     <option value="">Todos</option>
                                     <option value="male">Homem</option>
-                                    <option value="mulher">Mulher</option>
+                                    <option value="female">Mulher</option>
                                 </select>
                             </div>
                             <hr />
