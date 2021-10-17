@@ -1,8 +1,8 @@
-import React, { useContext, useEffect, useState} from 'react';
+import React, { useContext, useEffect } from 'react';
 
 import { Link, useParams } from 'react-router-dom';
 import Context from '../Context/Context';
-import { Container } from 'react-bootstrap';
+import { Container, Row, Col } from 'react-bootstrap';
 
 import './assets/User.css'
 
@@ -10,7 +10,6 @@ import L from 'leaflet';
 import { OpenStreetMapProvider } from 'leaflet-geosearch';
 
 function User() {
-    // const [latLon, setLatLon] = useState([0,0]);
     const { id } = useParams();
 
     const { users } = useContext(Context)
@@ -22,11 +21,11 @@ function User() {
     else
         localStorage.setItem('user', JSON.stringify(user));
 
-    const { picture:{large}, dob, name:{ first, last, title}, email, age, nat, registered, location} = user;
-
+    const { picture:{large}, dob, name:{ first, last, title}, email, nat, registered, gender,location} = user;
+console.log(user)
     const findAddress = async () => {
         const provider = new OpenStreetMapProvider();
-
+        
         const result = await provider.search({ query: ` ${location.city} - ${location.state} - ${location.country}`})
         const latLon = ([result[0].raw.lat,result[0].raw.lon] )
 
@@ -48,9 +47,23 @@ function User() {
     })
 
     return (
-        <div>
+        <div id="user">
             <Container>
-                <img src={large} alt="" />
+                <Row >
+                    <Col xl={6} sm={12}>
+                        <div className="basicInfo">
+                            <h3>Oi! Me chamo {`${first} ${last}`}</h3>
+                            <img src={large} alt={`${first} ${last}`} />
+                            <p>{`${gender}, ${dob.age}`}</p>
+                        </div>
+                    </Col>
+                    <Col xl={6} sm={12}>
+                        <div className="mainInfo">
+                            
+                        </div>
+                    </Col>
+                </Row>
+                
 
             </Container>
             <div id="mapid"></div>

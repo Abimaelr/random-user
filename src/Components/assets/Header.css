@@ -9,7 +9,6 @@ header {
       -ms-flex-pack: space-evenly;
           justify-content: space-evenly;
   background-color: #512DA8;
-  margin-bottom: 50px;
   height: 60px;
   padding: 0 50px;
 }
