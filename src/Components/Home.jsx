@@ -27,36 +27,44 @@ function Home() {
         <div>
             <Container>
                 <form>
-                    <label htmlFor="qnt">Quantas Pessoas?</label>
-                    <input min="1" defaultValue={1} type="number" name="qnt" id="qnt"  onChange={({ target }) => setAmount(target.value)}/>
-                    
-                    <label htmlFor="gender">Gênero</label>
-                    <select name="gender" id="gender" onChange={({ target }) => setGender(target.value)}>
-                        <option value="">Todos</option>
-                        <option value="male">Homem</option>
-                        <option value="mulher">Mulher</option>
-                    </select>
-                    <label htmlFor="nacionality">Nacionalidade</label>
-                    <select name="nacionality" id="nacionality" onChange={ ({ target }) => setNacionality(target.value)}>
-                        <option value="">Todas</option>
-                        <option value="au">Australia</option>
-                        <option value="br">Brasil</option>
-                        <option value="ca">Canadá</option>
-                        <option value="ch">China</option>
-                        <option value="de">Alemanha</option>
-                        <option value="dk">Dinamarca</option>
-                        <option value="es">Espanha</option>
-                        <option value="fi">Finlândia</option>
-                        <option value="fr">França</option>
-                        <option value="gb">Grã Bretanha</option>
-                        <option value="ie">Irlanda</option>
-                        <option value="ir">Irã</option>
-                        <option value="no">Noruega</option>
-                        <option value="nl">Holanda</option>
-                        <option value="nz">Nova Zelândia</option>
-                        <option value="tr">Turquia</option>
-                        <option value="us">Estados Unidos</option>
-                    </select>
+                    <div>
+                        <label htmlFor="qnt"><p>Quantas Pessoas?</p></label>
+                        <input min="1" defaultValue={1} type="number" name="qnt" id="qnt"  onChange={({ target }) => setAmount(target.value)}/>
+                    </div>
+                    <hr />
+                    <div>
+                    <label htmlFor="gender"><p>Gênero</p></label>
+                        <select name="gender" id="gender" onChange={({ target }) => setGender(target.value)}>
+                            <option value="">Todos</option>
+                            <option value="male">Homem</option>
+                            <option value="mulher">Mulher</option>
+                        </select>
+                    </div>
+                    <hr />
+                    <div>
+                        <label htmlFor="nacionality"><p>Nacionalidade</p></label>
+                        <select name="nacionality" id="nacionality" onChange={ ({ target }) => setNacionality(target.value)}>
+                            <option value="">Todas</option>
+                            <option value="au">Australia</option>
+                            <option value="br">Brasil</option>
+                            <option value="ca">Canadá</option>
+                            <option value="ch">China</option>
+                            <option value="de">Alemanha</option>
+                            <option value="dk">Dinamarca</option>
+                            <option value="es">Espanha</option>
+                            <option value="fi">Finlândia</option>
+                            <option value="fr">França</option>
+                            <option value="gb">Grã Bretanha</option>
+                            <option value="ie">Irlanda</option>
+                            <option value="ir">Irã</option>
+                            <option value="no">Noruega</option>
+                            <option value="nl">Holanda</option>
+                            <option value="nz">Nova Zelândia</option>
+                            <option value="tr">Turquia</option>
+                            <option value="us">Estados Unidos</option>
+                        </select>
+                    </div>
+                    <hr />
                     <button type="submit" onClick={ (e) => gerar(e) }>Gerar</button>
                 </form>
                 <div className="userContainer">
@@ -65,7 +73,6 @@ function Home() {
                             name={name} age={dob.age} nacionality={nat} thumb={picture.medium}
                         />
                     </Link>
-                         
                     )}
                 </div>
             </Container>
