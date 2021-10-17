@@ -26,10 +26,18 @@ console.log(user)
     const findAddress = async () => {
         const provider = new OpenStreetMapProvider();
         
-        const result = await provider.search({ query: ` ${location.city} - ${location.state} - ${location.country}`})
-        const latLon = ([result[0].raw.lat,result[0].raw.lon] )
+        let result = await provider.search({ query: ` ${location.city} - ${location.state} - ${location.country}`})
 
-        var mymap = L.map('mapid').setView(latLon, 10);
+        if(result.length === 0) {
+            result = await provider.search({ query: ` ${location.state} - ${location.country}`})
+        }
+        if(result.length === 0) {
+            result = await provider.search({ query: ` ${location.country}`})
+        }
+
+        let latLon = ([result[0].raw.lat,result[0].raw.lon] )
+
+        var mymap = L.map('mapid').setView(latLon, 12);
         L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoiYWJpbWFlbDc3NyIsImEiOiJja243azB6bXowaG9jMnFwMGl3bWs3czB1In0.dz5yCHAmEjbm9-TGirkJrQ', {
             attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
             maxZoom: 18,
@@ -43,7 +51,7 @@ console.log(user)
     }
     
     useEffect(()=> {
-        // findAddress()
+        findAddress()
     })
 
     return (
@@ -69,7 +77,11 @@ console.log(user)
                             </div>
                             <div className="info">
                                 <i class="las la-map-marker-alt"></i>
-                                <p>{`${location.street.number}, ${location.street.name}, ${location.city}, ${location.state}, ${location.country}`}</p>
+                                <p>{`${location.street.number}, ${location.street.name}, ${location.city}, ${location.state}`}</p>
+                            </div>
+                            <div className="info">
+                                <img src={`https://www.countryflags.io/${nat}/flat/32.png`}/>
+                                <p>{`${location.country}`}</p>
                             </div>
                         </div>
                     </Col>

@@ -3,12 +3,14 @@
 #user
     min-height: 90.5vh
     padding-top: 50px
-
+   
 #mapid
     height: 300px
     width: 100%
     position: relative
     bottom: 0
+    margin-top: 50px
+
     
 
 .basicInfo
@@ -16,10 +18,30 @@
     flex-direction: column
     justify-content: center
     align-items: center
-    height: 200px
+    height: 220px
     // background: $primary-color
     color: $primary-text-color
     h3
         font-size: 1.0rem
+        font-family: $font1
+    p
+        font-family: $font1
     img
         border-radius: 50%
+
+.mainInfo
+    font-family: $font2
+    color: $secondary-text-color
+    display: flex
+    flex-direction: column
+    justify-content: space-around
+    height: 100%
+    a
+        text-decoration: none
+        color: $secondary-text-color
+    .info
+        display: flex
+        align-items: center
+        margin: auto 0
+        p, a
+            margin: 0 10px
