@@ -1,6 +1,8 @@
 import React, { useContext } from 'react';
+
 import { Link, useParams } from 'react-router-dom';
 import Context from '../Context/Context';
+import { Container } from 'react-bootstrap';
 
 function User() {
     const { id } = useParams();
@@ -8,13 +10,15 @@ function User() {
     const { users } = useContext(Context)
 
     const user = users[id];
-    const { picture:{large}, dob, name:{ first, last, title}, email } = user;
+    const { picture:{large}, dob, name:{ first, last, title}, email, age, nat, registered} = user;
     console.log(user)
+
     return (
         <div>
-            <h2>{ `${title}. ${first} ${last} `}</h2>
-            <img src={large} alt={ first} />
-            <a href={`mailto:${ email }`}>{ email }</a>
+            <Container>
+                <img src={large} alt="" />
+                
+            </Container>
         </div>
     )
 }
