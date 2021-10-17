@@ -68,7 +68,7 @@ function Home() {
                     <button type="submit" onClick={ (e) => gerar(e) }>Gerar</button>
                 </form>
                 <div className="userContainer">
-                    { users.map(({name, dob, nat, picture}, i) => <Link className="link" to={`/user/${i}`}>
+                    { users.map(({name, dob, nat, picture}, i) => <Link key={i} className="link" to={`/user/${i}`}>
                         <ListItem
                             name={name} age={dob.age} nacionality={nat} thumb={picture.medium}
                         />
