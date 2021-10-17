@@ -1,70 +1,102 @@
-# Getting Started with Create React App
+# Bem vindo ao Random-User 😀
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Olá! Esse projeto foi desenvolvido com o intuito de exercitar o consumo de API's e construir uma página dinâmica.
 
-## Available Scripts
+Acesse aqui : [Random-User](https://abimaelr.github.io/random-user/)
 
-In the project directory, you can run:
+> Feito especialmente para COLAB  💖
 
-### `yarn start`
+## Stack ⚙
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Foi feito uso de algumas ferramentas para a construção do projeto.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+ - [React](https://reactjs.org/)
+ - [SASS](https://sass-lang.com/)
+ - [Context Api](https://reactjs.org/docs/context.html)
+ - [Axios](https://www.npmjs.com/package/axios)
+ - [React Bootstrap](https://react-bootstrap.github.io/)
+ - [React-Router-Dom](https://reactrouter.com/)
+ - [Leaflet Maps](letjs.com)
+ - [Leaflet-Geosearch](https://github.com/smeijer/leaflet-geosearch)
+ - [React-Reveal](https://react-reveal.com)
+ - [Country Flags](https://www.countryflags.io/)
+ - [Random User API](https://randomuser.me/)
+ - [Line Awesome](https://icons8.com/line-awesome/)
 
-### `yarn test`
+## Métodos 👣
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Para a construir um projeto, antes dos códigos,  vem a idealização e planejamento. Podemos visualizar em alguns passos:
 
-### `yarn build`
+ 1. Leitura da documentação da Random User API
+ 2. Tipos de dados que podemos trabalhar
+ 3. Ideação do projeto
+ 4. Determinação da Stack
+ 5. Escolha da paleta de cores
+ 6. Code 🤘
+ 
+ Aqui temos um ponto importante, a Determinação da Stack foi levado em consideração o que seria ideal a entregar ao usuário levando em consideração as informações que a API Retorna.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Goals ⚽
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+ - Aplicativo com navegação
+ - Interface Intuitiva
+ - Consumir a maioria dos dados da API
+ - Realizar poucas requisições
+ - Ser responsiva
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Desafios 🧗
 
-### `yarn eject`
+Cada projeto é único, e cada problema, único também :D
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+***~~Problema com o Leaflet~~***
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Para atingir um dos objetivos, que é ter uma interface intuitiva, foi optado usar o mapa da Leaflet 🍃.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+Esse mapa tem uma versão que é componentizada para usar no React (clique [aqui para acessar](https://react-leaflet.js.org/)). Acontece que ao agrupar todas as dependências utilizadas no projeto, as versões entre as bibliotecas não são compatíveis, e o app quebra.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+Para resolver esse problema, foi utilizado a versão padrão da [Leaflet](https://leafletjs.com/), que tem como foco a aplicação no Vanilla JavaScript. Com isso, precisou fazer leves adaptações e fazer o projeto rodar no React.
 
-## Learn More
+Essas adaptações foram:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+ 1. Importar os scripts diretamente no `public/index.html`;
+ 2. Importar a Instância do Leaflet dentro do componente que vai consumir o mapa;
+ 3. Carregar o mapa ao iniciar o componente utilizando a Hook `useEffect`.
+ 
+***~~Problema com a API~~***
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Uma vez o mapa instalado, foi verificado que a coordenada referente ao usuário não corresponde ao endereço... E agora? Como usar o mapa depois de solucionar isso tudo? 😆
 
-### Code Splitting
+Aí entra o `Leaflet-Geosearch`. Essa é uma Api que faz parte do Leaflet porém tens que instalar por fora.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+    npm install leaflet-geosearch
+Sim, mas como ela resolve meu problema?
 
-### Analyzing the Bundle Size
+ - A API dos usuários, um dos dados que ela retorna é seu endereço *(Rua, Cidade, Estado, País)*. 
+ - A leaflet-geosearch retorna uma lista de possíveis endereços correspondente a pesquisa
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+E Sass!!! ~~Quer dizer: E Zass!~~ 😹😹😹
 
-### Making a Progressive Web App
+**Agora é só juntar as peças!**
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+Depois foi observado, que nem sempre temos o endereço correspondente à todas informações que o usuário fornece, então a dinâmica é essa:
 
-### Advanced Configuration
+Pesquisa-se:
+ - Cidade, Estado, País
+ - Estado, País
+ - País
+Se a primeira tentativa não retorna nada, pesquisa com a de baixo, e assim sucessivamente.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+Então, não é garantia que você visualizará o endereço exato, mas já dá pra ter uma boa noção de onde nosso colega mora :D
 
-### Deployment
+## Iniciando o Projeto 👷
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+Foi utilizado a framework React para componentizar e montar o Front-End!
 
-### `yarn build` fails to minify
+Para executar em sua máquina, execute os seguintes passos:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+ 1. `git clone git@github.com:Abimaelr/random-user.git`
+ 2. `cd random-user`
+ 3. `npm install`
+ 4. `npm start`
+
+> Importante instalar as dependências usando o `npm install`,  pois sem ela o projeto não irá rodar!
