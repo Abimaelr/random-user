@@ -4,6 +4,7 @@
 #user {
   min-height: 90.5vh;
   padding-top: 50px;
+  overflow: hidden;
 }
 
 #mapid {

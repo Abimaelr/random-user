@@ -1,9 +1,9 @@
 import React, { useContext, useEffect } from 'react';
 
-import { Link, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import Context from '../Context/Context';
 import { Container, Row, Col } from 'react-bootstrap';
-
+import Fade from 'react-reveal/Fade';
 import './assets/User.css'
 
 import L from 'leaflet';
@@ -22,7 +22,7 @@ function User() {
         localStorage.setItem('user', JSON.stringify(user));
 
     const { picture:{large}, dob, name:{ first, last }, email, nat, cell,registered, gender,location} = user;
-console.log(user)
+
     const findAddress = async () => {
         const provider = new OpenStreetMapProvider();
         
@@ -59,37 +59,41 @@ console.log(user)
             <Container>
                 <Row >
                     <Col xl={6} sm={12}>
-                        <div className="basicInfo">
-                            <h3>Oi! Me chamo { `${first} ${last}` }</h3>
-                            <img src={large} alt={ `${first} ${last}` } />
-                            <p>{` ${gender}, ${ dob.age}`}</p>
-                        </div>
+                        <Fade left>
+                                <div className="basicInfo">
+                                    <h3>Oi! Me chamo { `${first} ${last}` }</h3>
+                                    <img src={large} alt={ `${first} ${last}` } />
+                                    <p>{` ${gender}, ${ dob.age}`}</p>
+                                </div>
+                        </Fade>
                     </Col>
                     <Col xl={6} sm={12}>
-                        <div className="mainInfo">
-                            <div className="info">
-                                <i class="las la-envelope"></i>
-                                <a href={`mailto:${ email }`}>{ email }</a>
+                        <Fade right>
+                            <div className="mainInfo">
+                                <div className="info">
+                                    <i class="las la-envelope"></i>
+                                    <a href={`mailto:${ email }`}>{ email }</a>
+                                </div>
+                                <div className="info">
+                                    <i class="las la-phone"></i>
+                                <a href={`tel: ${cell}`}>{ cell }</a>
+                                </div>
+                                <div className="info">
+                                    <i class="las la-map-marker-alt"></i>
+                                    <p>{`${location.street.number}, ${location.street.name}, ${location.city}, ${location.state}`}</p>
+                                </div>
+                                <div className="info">
+                                    <img src={`https://www.countryflags.io/${nat}/flat/32.png`}/>
+                                    <p>{`${location.country}`}</p>
+                                </div>
                             </div>
-                            <div className="info">
-                                <i class="las la-phone"></i>
-                               <a href={`tel: ${cell}`}>{ cell }</a>
-                            </div>
-                            <div className="info">
-                                <i class="las la-map-marker-alt"></i>
-                                <p>{`${location.street.number}, ${location.street.name}, ${location.city}, ${location.state}`}</p>
-                            </div>
-                            <div className="info">
-                                <img src={`https://www.countryflags.io/${nat}/flat/32.png`}/>
-                                <p>{`${location.country}`}</p>
-                            </div>
-                        </div>
+                        </Fade>
                     </Col>
                 </Row>
-                
-
             </Container>
-            <div id="mapid"></div>
+            <Fade bottom>
+                <div id="mapid"></div>
+            </Fade>
         </div>
     )
 }
