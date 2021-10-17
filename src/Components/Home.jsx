@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import api from '../api';
 import Context from '../Context/Context';
 import  ListItem  from './ListItem';
+import Bounce from 'react-reveal/Bounce';
 
 import './assets/Home.css';
 
@@ -18,6 +19,7 @@ function Home() {
 
     const gerar = (e) => {
         e.preventDefault();
+        setUsers([]);
         api.get(`/?nat=${nacionality}&gender=${gender}&results=${amount}`)
         .then(({data}) => {
             console.log(data.results)
@@ -30,9 +32,11 @@ function Home() {
             <Container>
                 <Row>
                     <Col sm={6}>
-                        <div className="imgContainer">
-                            <img className="image" src={img} alt="" />
-                        </div>
+                        <Bounce>
+                            <div className="imgContainer">
+                                <img className="image" src={img} alt="" />
+                            </div>
+                        </Bounce>
                     </Col>
                     <Col sm={6}>
                         <form>
@@ -80,9 +84,9 @@ function Home() {
                 </Row>
                 <div className="userContainer">
                     { users.map(({name, dob, nat, picture}, i) => <Link key={i} className="link" to={`/user/${i}`}>
-                        <ListItem
+                       <Bounce right> <ListItem
                             name={name} age={dob.age} nacionality={nat} thumb={picture.medium}
-                        />
+                        /></Bounce>
                     </Link>
                     )}
                 </div>
