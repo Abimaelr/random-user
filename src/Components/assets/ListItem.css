@@ -11,8 +11,17 @@
       -ms-flex-direction: column;
           flex-direction: column;
   border-radius: 20px 0 20px 0;
+  -webkit-box-shadow: 1px 5px 10px #D1C4E9;
+          box-shadow: 1px 5px 10px #D1C4E9;
   height: 250px;
   width: 160px;
+  -webkit-transition: 500ms;
+  transition: 500ms;
+}
+
+.listItem:hover {
+  -webkit-transform: translateY(-5px);
+          transform: translateY(-5px);
 }
 
 .listItem img {
