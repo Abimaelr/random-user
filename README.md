@@ -25,7 +25,7 @@ Foi feito uso de algumas ferramentas para a construção do projeto.
 
 ## Métodos 👣
 
-Para a construir um projeto, antes dos códigos,  vem a idealização e planejamento. Podemos visualizar em alguns passos:
+Para a construir um projeto, antes dos códigos,  vem o planejamento. Esse planejamento foi feito a exemplo dos passos a seguir:
 
  1. Leitura da documentação da Random User API
  2. Tipos de dados que podemos trabalhar
